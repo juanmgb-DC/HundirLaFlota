@@ -9,7 +9,7 @@ class Tablero:
         self.AGUA = 0
         self.TOCADO = 1
         self.HUNDIDO = 2
-
+        self.disparos_realizados = [[False] * self.tamano for _ in range(self.tamano)]
 
         por1 = Nave("Enterprise", "portaaviones", 5)
 
@@ -38,18 +38,20 @@ class Tablero:
         ]
 
 
-
     def disparar(self, x, y):
+        if x < 0 or x >= self.tamano or y < 0 or y >= self.tamano:
+            print("Coordenadas fuera de rango")
+            return None
+
+        if self.disparos_realizados[x][y]:
+            print("Ya se disparó en esa posición")
+            return None
+
+        self.disparos_realizados[x][y] = True
         objetivo = self.casillero[x][y]
 
         if objetivo is None:
-            print("Agua")
             return self.AGUA
 
-        resultado = objetivo.recibir_disparo()
-
-        if resultado == 1:
-            return self.TOCADO
-        elif resultado == 2:
-            return self.HUNDIDO
+        return objetivo.recibir_disparo()
 

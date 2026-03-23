@@ -1,11 +1,8 @@
 from tablero import Tablero
 
 class Juego:
-
     def __init__(self):
         self.tablero = Tablero()
-        resultado = self.lanzar_ataque(5, 3)
-        self.mostrar_resultado(resultado)
 
     def lanzar_ataque(self, x, y):
         return self.tablero.disparar(x, y)
@@ -20,4 +17,6 @@ class Juego:
 
 
 if __name__ == "__main__":
-    Juego()
+    juego = Juego()
+    resultado = juego.lanzar_ataque(5, 3)
+    juego.mostrar_resultado(resultado)

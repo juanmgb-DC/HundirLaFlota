@@ -14,9 +14,14 @@ class Juego:
             print("Tocado")
         elif resultado == 2:
             print("Hundido")
-
+        else:
+            print("Resultado no válido")
 
 if __name__ == "__main__":
     juego = Juego()
-    resultado = juego.lanzar_ataque(5, 3)
-    juego.mostrar_resultado(resultado)
+
+
+    ataques = [(1,1), (3,3), (1,1), (0,0), (9,9)]
+    for x, y in ataques:
+        print(f"\nDisparo en ({x},{y}):")
+        resultado = juego.lanzar_ataque(x, y)
